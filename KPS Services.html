@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KPS ARIFWALA – Digital Solution Hub</title>
+  <style>
+    :root{
+      --bg:#0b1224;
+      --card:#0f1a33;
+      --pri:#2f6fff;
+      --pri-2:#00d4ff;
+      --txt:#e9f1ff;
+      --muted:#bcd0ff;
+      --glow:0 0 24px rgba(47,111,255,.45),0 0 64px rgba(0,212,255,.2);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden;line-height:1.6}
+
+    header{padding:80px 20px 60px;text-align:center;position:relative;overflow:hidden}
+    .hero-title{font-size:clamp(34px,5vw,68px);font-weight:900;margin:0;background:linear-gradient(135deg,var(--pri-2),var(--pri));-webkit-background-clip:text;color:transparent;letter-spacing:1px}
+    .hero-sub{margin:16px auto 0;max-width:900px;opacity:.92;font-size:clamp(16px,2.2vw,20px)}
+    .hero-cta{margin-top:32px}
+    .hero-cta .btn{padding:14px 30px;font-size:17px}
+
+    .orb{position:absolute;width:480px;height:480px;filter:blur(60px);opacity:.25;border-radius:50%;pointer-events:none}
+    .o1{top:-140px;left:-140px;background:radial-gradient(circle at 30% 30%,var(--pri),transparent 60%)}
+    .o2{bottom:-160px;right:-160px;background:radial-gradient(circle at 70% 70%,var(--pri-2),transparent 60%)}
+
+    .section{max-width:1200px;margin:0 auto;padding:30px 20px}
+    .section h2{margin:20px 0;font-size:clamp(24px,3.5vw,36px);display:flex;align-items:center;gap:10px}
+    .section h2 .dot{width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--pri),var(--pri-2));box-shadow:var(--glow)}
+    .lead{color:var(--muted);margin-bottom:26px}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}
+    .card{position:relative;border-radius:16px;padding:22px;cursor:pointer;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid rgba(128,170,255,.18);box-shadow:0 12px 30px rgba(0,0,0,.35);transition:.25s}
+    .card:hover{transform:translateY(-6px) scale(1.02);border-color:rgba(47,111,255,.55);box-shadow:var(--glow)}
+    .title{font-weight:700;font-size:18px;margin:2px 0 8px}
+    .desc{color:var(--muted);font-size:14px;line-height:1.45}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.3s;z-index:999}
+    .modal.active{opacity:1;pointer-events:auto}
+    .modal-content{background:var(--card);padding:34px;border-radius:20px;max-width:650px;width:90%;box-shadow:var(--glow);text-align:left;position:relative;animation:pop .35s ease}
+    @keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+    .modal h3{margin-top:0;font-size:26px;font-weight:800;color:var(--pri-2)}
+    .modal p{margin:14px 0 22px;color:var(--muted);line-height:1.65}
+    .close-btn{position:absolute;top:12px;right:16px;font-size:24px;cursor:pointer;color:var(--muted)}
+    .btn{display:inline-block;padding:12px 20px;margin-top:8px;background:linear-gradient(135deg,var(--pri),var(--pri-2));border:none;border-radius:999px;color:#fff;font-weight:600;cursor:pointer;transition:.25s}
+    .btn:hover{transform:scale(1.05);box-shadow:var(--glow)}
+
+    footer{background:rgba(255,255,255,.04);border-top:1px solid rgba(128,170,255,.18);padding:30px 16px 46px;text-align:center}
+    .contacts{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:12px 0 8px}
+    .chip{padding:10px 14px;border-radius:999px;background:rgba(47,111,255,.12);border:1px solid rgba(47,111,255,.35)}
+
+    @media print{
+      body{background:#fff;color:#111}
+      .orb,.modal{display:none}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .card{box-shadow:none;border:1px solid #ddd;background:#fff}
+      footer{background:#fff;border-top:1px solid #ddd}
+    }
+    @page{size:A4;margin:14mm}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <h1 class="hero-title">KPS ARIFWALA</h1>
+    <p class="hero-sub">Your Complete Hub for Printing, Composing, Online Services, Admissions, Jobs & More. We simplify your daily tasks with speed and professionalism.</p>
+    <div class="hero-cta">
+      <a href="#services" class="btn">🚀 Explore Our Services</a>
+    </div>
+  </header>
+
+  <main class="section" id="services">
+    <h2><span class="dot"></span> Our Services</h2>
+    <p class="lead">We offer a wide range of services to make your work easy. Click on any card to learn more and directly avail the service through WhatsApp.</p>
+    <div class="grid" id="servicesGrid"></div>
+  </main>
+
+  <footer>
+    <div class="contacts">
+      <span class="chip"><strong>Owner:</strong> Rana Umrai — +92 322 7373173</span>
+      <span class="chip"><strong>Manager:</strong> Ray Shafiq — 0320 7373173</span>
+      <span class="chip"><strong>Address:</strong> Thana Bazar, Arifwala, Punjab, Pakistan</span>
+      <span class="chip"><strong>Courier:</strong> TCS Partner Service Available</span>
+    </div>
+    <p style="color:var(--muted);margin-top:10px">© 2025 KPS Arifwala. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="close">&times;</span>
+      <h3 id="modal-title"></h3>
+      <p id="modal-desc"></p>
+      <button class="btn" id="avail-btn">Avail This Service</button>
+    </div>
+  </div>
+
+  <script>
+    const services = [
+      {t:'Photocopy & Printing', d:'We provide crisp black & white and high-quality colour printing for documents, notes, forms, and bulk jobs. Our printing service ensures sharp text and vibrant colours that match professional standards.'},
+      {t:'Scanning & Email Services', d:'Get your important files digitized instantly. We scan in HD resolution and directly send to your email, so you never lose a document again.'},
+      {t:'Passport Size Photos (Instant)', d:'Need urgent photos? We capture, edit, and print professional passport-size photos with proper background correction and official sizing within minutes.'},
+      {t:'Photo Printing & Editing', d:'We print your personal or professional photos in high resolution with editing, touch-ups, and background adjustments for a perfect finish.'},
+      {t:'Document Composing (Urdu & English)', d:'From letters to applications, we provide neat and accurate composing services in both Urdu & English with error-free formatting.'},
+      {t:'MS Office Work (Word, Excel, PowerPoint)', d:'Assignments, sheets, data entry, and presentations are handled with complete formatting and accuracy.'},
+      {t:'Online Form Filling', d:'We carefully fill online forms for admissions, scholarships, exams, and government portals – ensuring no mistakes.'},
+      {t:'Online Admission Applications', d:'Complete guidance and digital form submission for school, college, and university admissions.'},
+      {t:'Job Applications & CV/Resume Making', d:'Stand out with a polished CV & tailored job application that highlights your strengths and professionalism.'},
+      {t:'Government Forms (NADRA, BISE, etc.)', d:'Get hassle-free support in filling and submitting government forms and board applications.'},
+      {t:'Result Card Print / Download', d:'Quickly download and print your exam results in high resolution for record keeping.'},
+      {t:'Board/University Challan Forms', d:'Instant downloading, filling, and printing of challans for universities and boards.'},
+      {t:'Allama Iqbal University Assignments', d:'Composing, formatting, and printing services for AIOU assignments with complete compliance to guidelines.'},
+      {t:'Cover Letters', d:'Professional and personalized cover letters designed to impress employers and selection boards.'},
+      {t:'Visiting Cards & Letter Heads', d:'Custom-designed business cards and letterheads that build your professional identity.'},
+      {t:'Certificates Designing & Printing', d:'We design elegant certificates for schools, offices, and events, with premium-quality printing.'},
+      {t:'Data Entry & Typing Work', d:'Fast and accurate typing and data formatting in Urdu & English for any kind of project.'},
+      {t:'PDF Conversion (Word ↔ PDF, JPG ↔ PDF)', d:'Convert documents without losing formatting or quality. Clean, fast, and reliable conversions.'},
+      {t:'Online Fee Submission (Board/University/Utility Bills)', d:'We submit online fees for exams, universities, and bills securely on your behalf.'},
+      {t:'CV/Resume Professional Templates', d:'Modern CV templates tailored for different industries that boost your chances of getting hired.'},
+      {t:'Courier Service (TCS Partner)', d:'Send and receive parcels/documents safely with our official TCS courier service available at our shop.'}
+    ];
+
+    const grid=document.getElementById('servicesGrid');
+    const modal=document.getElementById('modal');
+    const modalTitle=document.getElementById('modal-title');
+    const modalDesc=document.getElementById('modal-desc');
+    const availBtn=document.getElementById('avail-btn');
+    const closeBtn=document.getElementById('close');
+
+    const phoneIntl='923207373173';
+
+    services.forEach(({t,d})=>{
+      const card=document.createElement('div');
+      card.className='card';
+      card.innerHTML=`<div class="title">${t}</div><div class="desc">${d.substring(0,80)}...</div>`;
+
+      card.addEventListener('click',()=>{
+        modal.classList.add('active');
+        modalTitle.textContent=t;
+        modalDesc.textContent=d;
+        availBtn.onclick=()=>{
+          const msg=`Hello, I want to avail the service: ${t}`;
+          const url=`https://wa.me/${phoneIntl}?text=${encodeURIComponent(msg)}`;
+          window.open(url,'_blank');
+        }
+      });
+
+      grid.appendChild(card);
+    });
+
+    closeBtn.addEventListener('click',()=>modal.classList.remove('active'));
+    window.addEventListener('click',(e)=>{if(e.target===modal)modal.classList.remove('active')});
+  </script>
+</body>
+</html>
